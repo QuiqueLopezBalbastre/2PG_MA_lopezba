@@ -1,0 +1,21 @@
+------------------------
+Formulas de perspectivas
+------------------------
+Xp = Xc + X * f / Z
+Yp = Yc - Y * f / Z
+
+------------------------
+Definiciones
+------------------------
+Framebuffer 	 --> Pantalla de pixeles
+FOV		 --> Field of View
+LUT 	    	 --> Look UP Table (principalmente paletas de colores)
+RT  	    	 --> Real-Time
+RayTracing  	 --> Lanzar rayos desde el punto de origen hasta todos los objetos en el FOV, 
+		     calculando como incide la luz, sus rebotes y las sombras en el objeto.
+Rasterizing 	 --> Pintar lineas horizontales en el framebuffer
+Aliasing    	 --> Efecto escalera en una linea o borde
+Mano	    	 --> Dirección en la que se ordenan los puntos de un polígono
+Culling	    	 --> Eliminar polígonos en el pintado según la ordenación de sus puntos (mano)
+Backface culling --> Eliminar polígonos con la mano contraria al FOV
+Frontface culling--> Eliminar polígonos con la mano frente al FOV
