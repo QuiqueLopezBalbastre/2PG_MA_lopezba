@@ -9,8 +9,8 @@ out vec4 fragColor;
 #define PI 3.141592
 
 void main() {
-    float red = cos(PI * 7.5 * ((gl_FragCoord.y / u_window_size.y) + 1.5* (gl_FragCoord.x / u_window_size.x)));
-    float green = cos(PI * 7.5 * ((gl_FragCoord.y / u_window_size.y) + 1.5*(gl_FragCoord.x / u_window_size.x)));
+    float red = cos(PI * 5.0 * ((gl_FragCoord.y / u_window_size.y) + 1.5 * (gl_FragCoord.x / u_window_size.x)));
+    float green = cos(PI * 5.0 * ((gl_FragCoord.y / u_window_size.y) + 1.5 *(gl_FragCoord.x / u_window_size.x)));
     float blue = 0.0;
     float alpha = 0.0;
 

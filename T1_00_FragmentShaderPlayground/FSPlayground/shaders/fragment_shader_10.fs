@@ -8,22 +8,13 @@ uniform vec2 u_window_size;
 out vec4 fragColor;
 #define PI 3.141592
 
+
 void main() {
 
-    float red = sin(PI * 20.0 * (gl_FragCoord.x/u_window_size.x));
+    float red = clamp(sin(PI * 20.0 * (gl_FragCoord.x/u_window_size.x)), 0.0, 1.0);
     float green = 0.0;
     float blue = 0.0;
-    float alpha = 0.0;
+    float alpha = 1.0;
 
     fragColor = vec4(red, green, blue, alpha);
 }
-/*
-void main() {
-  float stripeWidth = 0.1;
-  
-  float stripe = mod(gl_FragCoord.x / u_window_size.x, stripeWidth * 2);
-  float r = step(stripeWidth, stripe);
-
-  fragColor = vec4(r, 0.0, 0.0, 1.0);
-}
-*/

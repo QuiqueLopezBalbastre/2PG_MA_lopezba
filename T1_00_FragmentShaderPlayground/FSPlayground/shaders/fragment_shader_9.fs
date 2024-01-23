@@ -8,7 +8,7 @@ uniform vec2 u_window_size;
 out vec4 fragColor;
 
 void main() {
-    fragColor = vec4(smoothstep(0.45, 0.55, gl_FragCoord.x / u_window_size.x)  ,
+    fragColor = vec4(smoothstep(0.45, 0.55, gl_FragCoord.x / u_window_size.x),
                      smoothstep(0.45, 0.55, gl_FragCoord.y / u_window_size.y),
                      0.0,
                      1.0);
