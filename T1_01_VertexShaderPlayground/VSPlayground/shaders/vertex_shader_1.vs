@@ -32,14 +32,14 @@ mat4 InitAsScale(float sx, float sy, float sz) {
 
 
 mat4 InitAsRotate(float angle, vec3 axis) {
-  float s = sinf(angle);
-  float c = cosf(angle);
+  float s = sin(angle);
+  float c = cos(angle);
   float oc = 1.0 - c;
 
-  return mat4(oc - pow(axis.x, 2) + c,              oc ∗ axis. x ∗ axis. y − axis. z ∗ s, oc ∗ axis. x ∗ axis. z + axis. y ∗ s, 0.0,
-              oc ∗ axis. x ∗ axis. y + axis. z * s, oc ∗ pow(axis.y, 2) + c,              oc ∗ axis. y ∗ axis. z − axis. x ∗ s, 0.0,
-              oc ∗ axis. x ∗ axis. z − axis. y ∗ s, 0.0,                                  oc ∗ pow(axis.z, 2) + c,              0.0,
-              0.0,                                  0.0,                                  0.0,                                  1.0);
+  return mat4(oc * axis.x * axis.x  + c,            oc * axis. x * axis. y - axis. z * s, oc * axis. x * axis. z + axis. y * s, 0.0,
+              oc * axis. x * axis. y + axis. z * s, oc *  axis.y * axis.y  + c,           oc * axis. y * axis. z - axis. x * s, 0.0,
+              oc * axis. x * axis. z - axis. y * s, oc * axis.y * axis.z + axis.x * s,    oc *  axis.z * axis.z + c, 0.0,
+              0.0, 0.0, 0.0, 1.0);
 }
 
 mat4 InitAsView(vec3 camera_position, vec3 target_point)
