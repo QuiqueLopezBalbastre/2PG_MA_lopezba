@@ -1,13 +1,6 @@
 #version 330
 
-//Cube size:
-//1.0 x 1.0 x 1.0
-//By default, in this demo the camera is in the following position:
-//3.0, 2.0, 3.0
-//By default, in this demo the object is in the following position:
-//0.0, 0.0, 0.0
-//By default, in this demo the window has the following size:
-//1000.0, 600.0
+ 8
 
 uniform mat4 u_m_matrix;
 uniform mat4 u_vp_matrix;
@@ -36,7 +29,7 @@ void main() {
   mat4 rotation = InitAsRotate(u_time * 0.001, vec3(0.0, 1.0, 0.0));
   position = a_position;
   normal = (rotation * vec4(a_normal, 0.0)).xyz;
-  vec4 pos = u_vp_matrix * rotation * u_m_matrix  * vec4(a_position, 1.0);
+  vec4 pos = u_vp_matrix * rotation * u_m_matrix * vec4(a_position, 1.0);
   pos.x = clamp(pos.x,pos.y,1.0);
   // pos.y = clamp(pos.y,0.0,1.0);
   gl_Position = pos;
