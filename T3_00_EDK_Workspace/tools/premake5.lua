@@ -14,8 +14,8 @@ PROJ_DIR = path.getabsolute("./../")
 project_names = {
   "PR03_00_Template",
   "PR03_01_Demo",
+  "PR03_02_FirstScene",
 
-  --"PR03_02_FirstScene",
   --"PR03_03_SolarSystem",
   --"PR03_04_DotProduct",
   --"PR03_05_BasicMaterial",
@@ -135,12 +135,12 @@ project "PR03_01_Demo"
 	  path.join(PROJ_DIR, "./tests/PR03_01_Demo.cc"),
   }
 
---[[
-project "PR03_02_FirstScene"
+  project "PR03_02_FirstScene"
 	files {
-	  path.join(PROJ_DIR, "./tests/PR03_02_FirstScene.cc"),
+    path.join(PROJ_DIR, "./tests/PR03_02_FirstScene.cc"),
   }
-
+  
+--[[
 project "PR03_03_SolarSystem"
 	files {
 	  path.join(PROJ_DIR, "./tests/PR03_03_SolarSystem.cc"),
