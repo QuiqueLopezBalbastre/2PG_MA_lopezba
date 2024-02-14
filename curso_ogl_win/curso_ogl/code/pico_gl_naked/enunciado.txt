@@ -1,0 +1,21 @@
+
+PicoGL, como OpenGL, usa coordenadas unitarias para la pantalla (-1 a 1, para ambos ejes). PicoGL no recibe matrices 
+de transformacion, por lo que pintara los vertices usando las posiciones X,Y tal cual vienen.
+
+Ejer.: sobre un fondo azul, dibujar 2 anillos (2D) giratorios de 20 segmentos con las siguientes especificaciones
+
+  1er Anillo
+     Radio: de 150 (pixels) a 240
+     Color: verde
+     Configurado para "backface culling"
+     Solido, sin transparencia
+  
+  2o Anillo  
+     Radio: de 220 a 280
+     Color: rojo   
+     Configurado para "frontface culling"
+     Transparente al 50%
+
+Nota: para hacer el trabajo, sacar copias del ejemplo del triangulo y el script de compile y modificarlos.
+Asi conservais el ejemplo original de referencia.
+

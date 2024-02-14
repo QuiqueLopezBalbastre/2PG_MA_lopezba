@@ -1,0 +1,40 @@
+
+
+El interfaz de OGL esta muy abstraido para permitir una maxima flexibilidad. En este 
+ejercicio teneis una nueva version de pico_gl que implementa una parte representativa del API
+de OGL.
+El ejercicio consiste en portar "example_rings" del ejercicio anterior a esta nueva libreria.
+Para ello:
+
+- Podeis copiar el example_triangles.cpp que ya os incorporo en el pack, en code/pico_gl_naked
+
+- Leed el interfaz en pico_gl.h y la documentacion online de OGL de las nuevas funciones:
+  
+  glEnable
+  glDisable 
+  glCullFace 
+  glBlendFunc 
+
+La funcion 
+
+  glColor4f  
+  
+...no pertenece al OpenGL core-profile que vais a aprender este año, sino a antiguas versiones de OGL.
+La incluyo porque nos permite darle un color a los triangulos sin necesidad de shaders.
+
+- Como cabeceras, ahora solo necesitareis
+
+#include "pico_gl.h"
+
+...y vec2.h si quereis tener un tipo estructurado {x,y}
+
+- Elimidad las llamadas y estructuras obsoletas y añadid las llamadas pertinentes en vuestro codigo para 
+configurar los modos de pintados (culling, blend, color)
+
+- Pintar con picoglDrawTris, usando el formato de malla de vertices + indices (esta llamada esta muy simplificada 
+respecto a un OGL core-profile)
+
+- El objetivo del ejercicio es que os familiariceis con la forma de configurar settings de pintado en OGL, y que
+podais comparar un interfaz de este tipo con uno mas "bajo nivel", como lo era el de pico_gl_naked.
+Que ventajas y desventajas tienes cada estilos de API?
+ 
