@@ -1,27 +1,5 @@
-﻿  material_basic.cc
-C:\Users\lopezba\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\src\material_basic.cc(70,58): error C4839: uso no estándar de la clase 'EDK3::scoped_array<char,unsigned int>' como argumento de una función variádica
-C:\Users\lopezba\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\src\material_basic.cc(70,58): message : no se llamará al constructor ni al destructor; se pasará una copia bit a bit de la clase como argumento
-C:\Users\lopezba\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\deps\EDK\include\EDK3\dev\program.h(29,23): message : vea la declaración de 'EDK3::scoped_array<char,unsigned int>'
-C:\Users\lopezba\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\src\material_basic.cc(70,58): error C2248: 'EDK3::scoped_array<char,unsigned int>::scoped_array': no se puede obtener acceso al miembro private miembro declarado en la clase 'EDK3::scoped_array<char,unsigned int>'
-C:\Users\lopezba\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\deps\EDK\include\EDK3\scoped_array.h(110): message : vea la declaración de 'EDK3::scoped_array<char,unsigned int>::scoped_array'
-C:\Users\lopezba\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\deps\EDK\include\EDK3\dev\program.h(29): message : vea la declaración de 'EDK3::scoped_array<char,unsigned int>'
-C:\Users\lopezba\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\src\material_basic.cc(70,16): warning C4477: 'printf' : la cadena de formato '%s' requiere un argumento de tipo 'char *', pero el argumento variádico 1 tiene el tipo 'EDK3::scoped_array<char,unsigned int>'
-C:\Users\lopezba\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\src\material_basic.cc(75,59): error C4839: uso no estándar de la clase 'EDK3::scoped_array<char,unsigned int>' como argumento de una función variádica
-C:\Users\lopezba\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\src\material_basic.cc(75,59): message : no se llamará al constructor ni al destructor; se pasará una copia bit a bit de la clase como argumento
-C:\Users\lopezba\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\deps\EDK\include\EDK3\dev\program.h(29,23): message : vea la declaración de 'EDK3::scoped_array<char,unsigned int>'
-C:\Users\lopezba\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\src\material_basic.cc(75,59): error C2248: 'EDK3::scoped_array<char,unsigned int>::scoped_array': no se puede obtener acceso al miembro private miembro declarado en la clase 'EDK3::scoped_array<char,unsigned int>'
-C:\Users\lopezba\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\deps\EDK\include\EDK3\scoped_array.h(110): message : vea la declaración de 'EDK3::scoped_array<char,unsigned int>::scoped_array'
-C:\Users\lopezba\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\deps\EDK\include\EDK3\dev\program.h(29): message : vea la declaración de 'EDK3::scoped_array<char,unsigned int>'
-C:\Users\lopezba\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\src\material_basic.cc(75,16): warning C4477: 'printf' : la cadena de formato '%s' requiere un argumento de tipo 'char *', pero el argumento variádico 1 tiene el tipo 'EDK3::scoped_array<char,unsigned int>'
-C:\Users\lopezba\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\src\material_basic.cc(82,50): error C4839: uso no estándar de la clase 'EDK3::scoped_array<char,unsigned int>' como argumento de una función variádica
-C:\Users\lopezba\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\src\material_basic.cc(82,50): message : no se llamará al constructor ni al destructor; se pasará una copia bit a bit de la clase como argumento
-C:\Users\lopezba\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\deps\EDK\include\EDK3\dev\program.h(29,23): message : vea la declaración de 'EDK3::scoped_array<char,unsigned int>'
-C:\Users\lopezba\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\src\material_basic.cc(82,50): error C2248: 'EDK3::scoped_array<char,unsigned int>::scoped_array': no se puede obtener acceso al miembro private miembro declarado en la clase 'EDK3::scoped_array<char,unsigned int>'
-C:\Users\lopezba\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\deps\EDK\include\EDK3\scoped_array.h(110): message : vea la declaración de 'EDK3::scoped_array<char,unsigned int>::scoped_array'
-C:\Users\lopezba\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\deps\EDK\include\EDK3\dev\program.h(29): message : vea la declaración de 'EDK3::scoped_array<char,unsigned int>'
-C:\Users\lopezba\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\src\material_basic.cc(82,16): warning C4477: 'printf' : la cadena de formato '%s' requiere un argumento de tipo 'char *', pero el argumento variádico 1 tiene el tipo 'EDK3::scoped_array<char,unsigned int>'
-  PR03_05_BasicMaterial.cc
-C:\Users\lopezba\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\tests\PR03_05_BasicMaterial.cc(84,30): error C2065: 'mat_diff_text': identificador no declarado
-C:\Users\lopezba\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\tests\PR03_05_BasicMaterial.cc(85,39): error C2065: 'mat_diff_text_settings': identificador no declarado
-C:\Users\lopezba\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\tests\PR03_05_BasicMaterial.cc(104,51): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
-  Generando código...
+﻿  PR03_05_BasicMaterial.cc
+C:\Users\QUIQUE\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\tests\PR03_05_BasicMaterial.cc(103,51): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\QUIQUE\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\tests\PR03_05_BasicMaterial.cc(136,33): warning C4100: 'argv': parámetro formal sin referencia
+C:\Users\QUIQUE\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\tests\PR03_05_BasicMaterial.cc(136,20): warning C4100: 'argc': parámetro formal sin referencia
+  PR03_05_BasicMaterial.vcxproj -> C:\Users\QUIQUE\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\bin\Debug\x32\PR03_05_BasicMaterial_d.exe

@@ -15,7 +15,7 @@
 #include "EDK3/geometry.h"
 #include "EDK3/camera.h"
 #include "EDK3/drawable.h"
-//#include "EDK3/matdiffusetexture.h"
+#include "EDK3/matdiffusetexture.h"
 #include "../include/material_basic.h"
 #include "EDK3/texture.h"
 #include "EDK3/dev/gpumanager.h"
@@ -43,8 +43,8 @@ void InitScene() {
   EDK3::dev::GPUManager::CheckGLError("Initializing the scene...");
   
   //Creating a cube:
-  EDK3::ref_ptr<EDK3::Geometry> quad_geo;
-  EDK3::CreateQuad(&quad_geo, 35.0f, 28.0f, true, true);
+  EDK3::ref_ptr<EDK3::Geometry> cube;
+  EDK3::CreateCube(&cube, 50.0f, true, true);
 
   //Loading texture:
   EDK3::ref_ptr<EDK3::Texture> texture;
@@ -57,10 +57,12 @@ void InitScene() {
   //Initializing the material and its settings:
   EDK3::ref_ptr < EDK3::MaterialBasic > mat_basic_text;
   mat_basic_text.alloc();
-  float color[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+  mat_basic_text->init();
+  float color[] = { 1.0f, 0.0f, 0.0f, 1.0f };
   EDK3::ref_ptr < EDK3::MaterialBasic::MaterialBasicSettings > mat_basic_text_settings;
   mat_basic_text_settings.alloc();
   mat_basic_text_settings->set_color(color);
+
   
   /*
   EDK3::ref_ptr<EDK3::MatDiffuseTexture> mat_diff_text;
@@ -77,17 +79,14 @@ void InitScene() {
 
   //Creates the drawables (Geometry + Material + Settings):
   EDK3::ref_ptr<EDK3::Drawable> drawable;
-  for (int i = -10; i < 10; i++) {
-    for (int j = -10; j < 10; j++) {
-      drawable.alloc();
-      drawable->set_geometry(quad_geo.get());
-      drawable->set_material(mat_diff_text.get());
-      drawable->set_material_settings(mat_diff_text_settings.get());
-      drawable->set_position(i * 70.0f, 0.0f, j * 70.0f);
-      drawable->set_HPR(360.0f * rand() / RAND_MAX, 360.0f * rand() / RAND_MAX, 360.0f * rand() / RAND_MAX);
-      root->addChild(drawable.get());
-    }
-  }
+  drawable.alloc();
+  drawable->set_geometry(cube.get());
+  drawable->set_material(mat_basic_text.get());
+  drawable->set_material_settings(mat_basic_text_settings.get());
+  drawable->set_position(0.0f, 0.0f, 0.0f);
+  drawable->set_HPR(0.0f, 0.0f, 0.0f);
+  root->addChild(drawable.get());
+
 
   //Allocating and initializing the camera:
   GameState.camera.alloc();

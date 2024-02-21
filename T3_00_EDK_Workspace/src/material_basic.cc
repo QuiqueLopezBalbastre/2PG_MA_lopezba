@@ -24,16 +24,20 @@ namespace EDK3 {
     uniform mat4 u_model;
     void main()
     {
-        gl_Position = u_vp_matrix * u_m_matrix * vec4(a_position, 1.0);
-        normal = a_normal * 0.5 + 0.5;
+        gl_Position = u_view_projection * u_model * vec4(a_position, 1.0);
+        
     }
 );
 
 #define GLSL(x) "#version 330\n"#x
     static const char* kExampleFragmentShader = GLSL(
-        //The shader itself.
-        layout(location = 0) in vec4 FragColor;
-    FragColor(color, 1.0);
+    //The shader itself.
+    out vec4 FragColor;
+    uniform vec3 color;
+    void main()
+    {
+        FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+    }
 );
 
 //IMPORTANT!!!
@@ -45,7 +49,7 @@ MaterialBasic::MaterialBasic()
 
 }
 MaterialBasic::~MaterialBasic(){}
-
+MaterialBasic& MaterialBasic::operator=(const MaterialBasic& other) { return *this; }
 
 void MaterialBasic::init() {
   //1: Request at least two shaders and one program to the GPU Manager. ¬/
@@ -53,34 +57,41 @@ void MaterialBasic::init() {
   //3: Compile both shaders. ¬/
   //4: Attach shaders to the program. ¬/
   //5: Finally... link the program! ¬/
+    EDK3::dev::GPUManager& GPU = *EDK3::dev::GPUManager::Instance();
     EDK3::ref_ptr<EDK3::dev::Shader> vshader;
     EDK3::ref_ptr<EDK3::dev::Shader> fshader;
-    EDK3::dev::GPUManager& GPU = *EDK3::dev::GPUManager::Instance();
     EDK3::scoped_array<char> error_log;
 
 
     GPU.newShader(&vshader);
     GPU.newShader(&fshader);
+    GPU.newProgram(&program_);
 
-    vshader->loadSource(vshader->kType_Vertex, kExampleVertexShader, strlen(kExampleVertexShader));
-    fshader->loadSource(fshader->kType_Fragment, kExampleFragmentShader, strlen(kExampleFragmentShader));
-
+    vshader->loadSource(vshader->EDK3::dev::Shader::Type::kType_Vertex, kExampleVertexShader, strlen(kExampleVertexShader));
+    fshader->loadSource(fshader->EDK3::dev::Shader::Type::kType_Fragment, kExampleFragmentShader, strlen(kExampleFragmentShader));
     if (!vshader->compile(&error_log))
     {
-        printf("Error in compiling Vertex Shader: %s\n", error_log);
+        printf("Error in compiling Vertex Shader: %s\n", error_log.get());
     }
     
     if (!fshader->compile(&error_log))
     {
-        printf("Error in compiling Fragment Shader:%s\n", error_log);
+        printf("Error in compiling Fragment Shader:%s\n", error_log.get());
     }
+/*
 
+    vshader->compile();
+    fshader->compile();
+*/
     program_->attach(vshader.get());
     program_->attach(fshader.get());
     if (!program_->link(&error_log))
     {
-        printf("Error in linking program: %s\n", error_log);
+        printf("Error in linking program: %s\n", error_log.get());
     }
+    /*
+    program_->link();
+    */
 }
 
 bool MaterialBasic::enable(const EDK3::MaterialSettings *mat) const {
@@ -89,7 +100,7 @@ bool MaterialBasic::enable(const EDK3::MaterialSettings *mat) const {
 
 
   program_->use();
-  return false;
+  return true;
 }
 
 void MaterialBasic::setupCamera(const float projection[16],
