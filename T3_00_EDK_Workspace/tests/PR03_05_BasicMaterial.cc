@@ -44,7 +44,8 @@ void InitScene() {
   
   //Creating a cube:
   EDK3::ref_ptr<EDK3::Geometry> cube;
-  EDK3::CreateCube(&cube, 50.0f, true, true);
+  EDK3::CreateCube(&cube, 1.0f, true, true);
+
 
   //Loading texture:
   EDK3::ref_ptr<EDK3::Texture> texture;
@@ -53,27 +54,35 @@ void InitScene() {
     printf("Can't load texture.png\n");
     exit(-2);
   }
+  EDK3::ref_ptr<EDK3::Texture> texture2;
+  EDK3::Texture::Load("../../../assets/test/T_Pringles.jpg", &texture2);
+  if (!texture) {
+      printf("Can't load texture.png\n");
+      exit(-2);
+  }
 
   //Initializing the material and its settings:
   EDK3::ref_ptr < EDK3::MaterialBasic > mat_basic_text;
   mat_basic_text.alloc();
   mat_basic_text->init();
-  float color[] = { 1.0f, 0.0f, 0.0f, 1.0f };
-  EDK3::ref_ptr < EDK3::MaterialBasic::MaterialBasicSettings > mat_basic_text_settings;
+  float red[] = { 1.0f, 0.0f, 0.0f, 1.0f };
+  float blue[] = { 0.0f, 0.0f, 1.0f, 1.0f };
+  EDK3::ref_ptr < EDK3::MaterialBasic::MaterialBasicSettings > mat_basic_settings;
+  EDK3::ref_ptr < EDK3::MaterialBasic::MaterialBasicTextureSettings > mat_basic_text_settings;
+  EDK3::ref_ptr < EDK3::MaterialBasic::MaterialBasicTextureSettings > mat_basic_text_settings2;
+  mat_basic_settings.alloc();
   mat_basic_text_settings.alloc();
-  mat_basic_text_settings->set_color(color);
+  mat_basic_text_settings2.alloc();
+  mat_basic_settings->set_color(blue);
+  mat_basic_text_settings->set_color(red);
+  mat_basic_text_settings2->set_color(blue);
+  mat_basic_text_settings->set_texture(texture, 0);
+  mat_basic_text_settings->set_texture(texture2, 1);
+  mat_basic_text_settings2->set_texture(texture2, 0);
+  mat_basic_text_settings2->set_texture(texture, 1);
+  
 
   
-  /*
-  EDK3::ref_ptr<EDK3::MatDiffuseTexture> mat_diff_text;
-  mat_diff_text.alloc();
-  EDK3::ref_ptr<EDK3::MatDiffuseTexture::Settings> mat_diff_text_settings;
-  mat_diff_text_settings.alloc();
-  float color[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-  mat_diff_text_settings->set_color(color);
-  mat_diff_text_settings->set_texture(texture.get());
-  */
-
   //Allocating root node:
   EDK3::Node* root = GameState.root.alloc();
 
@@ -82,36 +91,44 @@ void InitScene() {
   drawable.alloc();
   drawable->set_geometry(cube.get());
   drawable->set_material(mat_basic_text.get());
-  drawable->set_material_settings(mat_basic_text_settings.get());
-  drawable->set_position(0.0f, 0.0f, 0.0f);
+  drawable->set_material_settings(mat_basic_text_settings2.get());
+  drawable->set_position(-3.0f, 0.0f, 0.0f);
   drawable->set_HPR(0.0f, 0.0f, 0.0f);
   root->addChild(drawable.get());
+  drawable.alloc();
+  drawable->set_geometry(cube.get());
+  drawable->set_material(mat_basic_text.get());
+  drawable->set_material_settings(mat_basic_text_settings.get());
+  drawable->set_position(3.0f, 0.0f, 0.0f);
+  drawable->set_HPR(0.0f, 0.0f, 0.0f);
+  root->addChild(drawable.get());
+  /*
+  */
 
 
   //Allocating and initializing the camera:
   GameState.camera.alloc();
-  float pos[] = { 120.0f, 140.0f, 120.0f };
-  float view[] = { -120.0f, -140.0f, -120.0f };
+  float pos[] = { 0.0f, 5.0f, 15.0f };
+  float view[] = { 0.0f, 0.0f, 0.0f};
   GameState.camera->set_position(pos);
-  GameState.camera->set_view_direction(view);
-  GameState.camera->setupPerspective(70.0f, (float)kWindowWidth / (float)kWindowHeight, 1.0f, 1500.0f);
+  GameState.camera->set_view_target(view);
+
+  GameState.camera->setupPerspective(30.0f, (float)kWindowWidth / (float)kWindowHeight, 1.0f, 1500.0f);
   EDK3::dev::GPUManager::CheckGLError("Prepare END");
 }
 
 void UpdateFn() {
   //Updates the root node:
-  GameState.root->set_rotation_y(5 * ESAT::Time() / 1000.0);
+
+    GameState.root->child(0)->set_rotation_y(5 * ESAT::Time() / 100.0);
+    GameState.root->child(1)->set_rotation_y(-5 * ESAT::Time() / 100.0);
 
   //Orbital camera:
-  double mx = ESAT::MousePositionX();
-  double my = ESAT::MousePositionY();
-  double p = sin(-my / 200.0f) * 220.0f;
-  float pos[] = { (float)(p * cos(mx * 0.01f)),
-                  (float)cos(-my / 200) * 220.0f,
-                  (float)(p * sin(mx * 0.01f)) };
-  float view[] = { -pos[0], -pos[1], -pos[2] };
-  GameState.camera->set_position(pos);
-  GameState.camera->set_view_direction(view);
+
+  //float pos[] = { 0.0f, 0.0f, 10.0f };
+  //float view[] = { 0.0f, 0.0f, -10.0f };
+  //GameState.camera->set_position(pos);
+  //GameState.camera->set_view_direction(view);
   GameState.camera->set_clear_color(0.94f, 1.0f, 0.94f, 1.0f);
 }
 

@@ -1,5 +1,6 @@
 ﻿  PR03_05_BasicMaterial.cc
-C:\Users\QUIQUE\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\tests\PR03_05_BasicMaterial.cc(103,51): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\QUIQUE\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\tests\PR03_05_BasicMaterial.cc(136,33): warning C4100: 'argv': parámetro formal sin referencia
-C:\Users\QUIQUE\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\tests\PR03_05_BasicMaterial.cc(136,20): warning C4100: 'argc': parámetro formal sin referencia
-  PR03_05_BasicMaterial.vcxproj -> C:\Users\QUIQUE\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\bin\Debug\x32\PR03_05_BasicMaterial_d.exe
+C:\Users\lopezba\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\tests\PR03_05_BasicMaterial.cc(123,63): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\lopezba\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\tests\PR03_05_BasicMaterial.cc(124,64): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\lopezba\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\tests\PR03_05_BasicMaterial.cc(153,33): warning C4100: 'argv': parámetro formal sin referencia
+C:\Users\lopezba\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\tests\PR03_05_BasicMaterial.cc(153,20): warning C4100: 'argc': parámetro formal sin referencia
+  PR03_05_BasicMaterial.vcxproj -> C:\Users\lopezba\Documents\GitHub\2PG_MA_lopezba\T3_00_EDK_Workspace\bin\Debug\x32\PR03_05_BasicMaterial_d.exe

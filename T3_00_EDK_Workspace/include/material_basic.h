@@ -14,6 +14,7 @@
 #include "EDK3/ref_ptr.h"
 #include "EDK3/material.h"
 #include "EDK3/materialsettings.h"
+#include "EDK3/texture.h"
 #include "EDK3/dev/program.h"
 #include "EDK3/dev/shader.h"
 
@@ -57,7 +58,38 @@ class MaterialBasic : public EDK3::Material {
     }
     float color_[4];
   }; //MaterialBasicSettings
-
+  class MaterialBasicTextureSettings : public EDK3::MaterialSettings {
+  public:
+      MaterialBasicTextureSettings() {
+          memset(color_, 0, sizeof(color_));
+      }
+      void set_color(const float v[4]) { memcpy(color_, v, sizeof(color_)); }
+      const float* color() const { return color_; }
+      void set_texture(EDK3::ref_ptr<EDK3::Texture> t, const int i) { texture_[i] = t; }
+      EDK3::ref_ptr<EDK3::Texture>texture(const int i) const { return texture_[i]; };
+  protected:
+      virtual ~MaterialBasicTextureSettings() {}
+  private:
+      MaterialBasicTextureSettings(const MaterialBasicTextureSettings& other) {
+          memcpy(color_, other.color_, sizeof(color_));
+          texture_[0] = other.texture_[0];
+          texture_[1] = other.texture_[1];
+      }
+      MaterialBasicTextureSettings(MaterialBasicTextureSettings&& other) {
+          memcpy(color_, other.color_, sizeof(color_));
+          memset(other.color_, 0, sizeof(color_));
+          texture_[0] = other.texture_[0];
+          texture_[1] = other.texture_[1];
+          other.texture_[0].release();
+          other.texture_[1].release();
+      }
+      MaterialBasicTextureSettings& operator=(const MaterialBasicTextureSettings& other) {
+          memcpy(color_, other.color_, sizeof(color_));
+          return *this;
+      }
+      float color_[4];
+      EDK3::ref_ptr<EDK3::Texture> texture_[2];
+  }; //MaterialBasicSettings
 
  protected:
   virtual ~MaterialBasic();

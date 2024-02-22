@@ -22,21 +22,35 @@ namespace EDK3 {
     layout(location = 2) in vec2 a_uv;
     uniform mat4 u_view_projection;
     uniform mat4 u_model;
+    out vec2 uv;
     void main()
     {
         gl_Position = u_view_projection * u_model * vec4(a_position, 1.0);
-        
+        uv = a_uv;
     }
 );
 
 #define GLSL(x) "#version 330\n"#x
     static const char* kExampleFragmentShader = GLSL(
     //The shader itself.
+    uniform sampler2D u_albedo_1;
+    uniform sampler2D u_albedo_2;
+    uniform vec4 u_color;
+    uniform int u_use_texture;
+    in vec2 uv;
     out vec4 FragColor;
-    uniform vec3 color;
     void main()
     {
-        FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+        //srand(time_t);
+        if (0 == u_use_texture)
+        {
+            FragColor = u_color;
+        }
+        else {
+            
+            FragColor = u_color * texture(u_albedo_1, uv);
+        }
+        //FragColor = vec4(0.0, 0.0, 1.0, 1.0);
     }
 );
 
@@ -95,12 +109,50 @@ void MaterialBasic::init() {
 }
 
 bool MaterialBasic::enable(const EDK3::MaterialSettings *mat) const {
-  //Enable the material...
-  //... and use the uniforms located in the material settings!
+    //Enable the material...
+    //... and use the uniforms located in the material settings!
 
-
-  program_->use();
-  return true;
+    const MaterialBasicSettings* ms = dynamic_cast<const MaterialBasicSettings*>(mat);
+    MaterialBasicSettings* non_cast_ms = const_cast<MaterialBasicSettings*>(ms);
+    if (ms)
+    {
+        program_->use();
+        float color[4] = { 1.0f, 1.0f, 0.0f, 1.0f };
+        unsigned int color_loc = program_->get_uniform_position("u_color");
+        program_->set_uniform_value(color_loc, Type::T_FLOAT_4, non_cast_ms->color());
+        return true;
+    }
+    else
+    {
+        const MaterialBasicTextureSettings* ms2 = dynamic_cast<const MaterialBasicTextureSettings*>(mat);
+        if (ms2)
+        {
+            program_->use();
+            float color[4] = { 0.0f, 1.0f, 0.0f, 1.0f };
+            unsigned int color_loc = program_->get_uniform_position("u_color");
+            program_->set_uniform_value(color_loc, Type::T_FLOAT_4, ms2->color());
+            int slot = 0;
+            unsigned int albedo_loc = 0;
+            if (ms2->texture(0).get()){
+                ms2->texture(0)->bind(slot);
+                albedo_loc = program_->get_uniform_position("u_albedo_1");
+                program_->set_uniform_value(albedo_loc, EDK3::Type::T_INT_1, &slot);
+                slot++;
+            }
+            if (ms2->texture(1).get())
+            {
+                ms2->texture(1)->bind(slot);
+                albedo_loc = program_->get_uniform_position("u_albedo_2");
+                program_->set_uniform_value(albedo_loc, EDK3::Type::T_INT_1, &slot);
+                slot++;
+            }
+            int boolean = program_->get_uniform_position("u_use_texture");
+            program_->set_uniform_value(boolean, EDK3::Type::T_INT_1, &boolean);
+            //printf("use_texture = %d", boolean);
+            return true;
+        }
+    }
+    return false;
 }
 
 void MaterialBasic::setupCamera(const float projection[16],
