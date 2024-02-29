@@ -159,7 +159,13 @@
     <ClInclude Include="..\..\..\deps\STB\include\stbi_image.h">
       <Filter>deps\STB\include</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\geometry_custom_quad.h">
+      <Filter>include</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\include\material_basic.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\material_custom.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
@@ -167,7 +173,13 @@
     <ClCompile Include="..\..\..\deps\Perlin\src\SimplexNoise.cpp">
       <Filter>deps\Perlin\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\geometry_custom_quad.cc">
+      <Filter>src</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\material_basic.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\material_custom.cc">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\tests\PR03_00_Template.cc">

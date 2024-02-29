@@ -204,11 +204,15 @@
     <ClInclude Include="..\..\..\deps\EDK\include\ESAT_extra\tiny_obj_loader.h" />
     <ClInclude Include="..\..\..\deps\Perlin\include\Perlin\SimplexNoise.h" />
     <ClInclude Include="..\..\..\deps\STB\include\stbi_image.h" />
+    <ClInclude Include="..\..\..\include\geometry_custom_quad.h" />
     <ClInclude Include="..\..\..\include\material_basic.h" />
+    <ClInclude Include="..\..\..\include\material_custom.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\deps\Perlin\src\SimplexNoise.cpp" />
+    <ClCompile Include="..\..\..\src\geometry_custom_quad.cc" />
     <ClCompile Include="..\..\..\src\material_basic.cc" />
+    <ClCompile Include="..\..\..\src\material_custom.cc" />
     <ClCompile Include="..\..\..\tests\PR03_05_BasicMaterial.cc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

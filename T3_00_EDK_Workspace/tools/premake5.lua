@@ -15,12 +15,12 @@ project_names = {
   "PR03_00_Template",
   "PR03_01_Demo",
   "PR03_02_FirstScene",
+  "PR03_03_SolarSystem",
 
-  --"PR03_03_SolarSystem",
   --"PR03_04_DotProduct",
   "PR03_05_BasicMaterial",
-  --"PR03_06_CustomMaterial",
-  --"PR03_07_Quad",
+  "PR03_06_CustomMaterial",
+  "PR03_07_Quad",
   --"PR03_08_Cube",
   --"PR03_09_Sphere",
   --"PR03_10_Surface",
@@ -36,7 +36,7 @@ solution("EDK_Workspace_" .. _ACTION)
   location(PROJ_DIR .. "/build/")
   language "C++"
   kind "ConsoleApp"
-  startproject "PR03_05_BasicMaterial"
+  startproject "PR03_07_Quad"
   platforms {
     "x32",
     "Native",
@@ -139,34 +139,34 @@ project "PR03_01_Demo"
 	files {
     path.join(PROJ_DIR, "./tests/PR03_02_FirstScene.cc"),
   }
-  project "PR03_05_BasicMaterial"
-	files {
-    path.join(PROJ_DIR, "./tests/PR03_05_BasicMaterial.cc"),
-  }
-  --[[
   
   project "PR03_03_SolarSystem"
 	files {
     path.join(PROJ_DIR, "./tests/PR03_03_SolarSystem.cc"),
   }
   
-  project "PR03_04_DotProduct"
+  
+  
+  project "PR03_05_BasicMaterial"
 	files {
-    path.join(PROJ_DIR, "./tests/PR03_04_DotProduct.cc"),
+    path.join(PROJ_DIR, "./tests/PR03_05_BasicMaterial.cc"),
   }
   
-
-
-project "PR03_06_CustomMaterial"
+  project "PR03_06_CustomMaterial"
 	files {
-	  path.join(PROJ_DIR, "./tests/PR03_06_CustomMaterial.cc"),
+    path.join(PROJ_DIR, "./tests/PR03_06_CustomMaterial.cc"),
   }
 
 project "PR03_07_Quad"
 	files {
 	  path.join(PROJ_DIR, "./tests/PR03_07_Quad.cc"),
   }
-
+  --[[
+project "PR03_04_DotProduct"
+	files {
+    path.join(PROJ_DIR, "./tests/PR03_04_DotProduct.cc"),
+  }
+  
 project "PR03_08_Cube"
 	files {
 	  path.join(PROJ_DIR, "./tests/PR03_08_Cube.cc"),

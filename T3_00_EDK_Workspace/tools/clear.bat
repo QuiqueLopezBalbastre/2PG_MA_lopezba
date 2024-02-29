@@ -3,8 +3,6 @@ cls
 IF EXIST ..\build\.vs rmdir /s /q ..\build\.vs
 IF EXIST ..\build\PR03_00_Template rmdir /s /q ..\build\PR03_00_Template
 IF EXIST ..\build\PR03_01_Demo rmdir /s /q ..\build\PR03_01_Demo
-IF EXIST ..\build\PR03_01_Demo rmdir /s /q ..\build\PR03_02_FirstScene
-IF EXIST ..\build\PR03_01_Demo rmdir /s /q ..\build\PR03_05_BasicMaterial
 IF EXIST ..\bin\debug rmdir /s /q ..\bin\debug
 IF EXIST ..\bin\release rmdir /s /q ..\bin\release
 IF EXIST ..\build rmdir /s /q ..\build

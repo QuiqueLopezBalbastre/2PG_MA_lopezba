@@ -33,6 +33,7 @@ const int kWindowWidth = 1024;
 const int kWindowHeight = 768;
 
 
+
 void InitScene() {
   //Allocating root node:
   EDK3::Node* root = GameState.root.alloc();
@@ -49,7 +50,7 @@ void InitScene() {
   EDK3::ref_ptr<EDK3::Geometry> cube;
   EDK3::CreateCube(&cube, 3.0f, true, true);
   EDK3::ref_ptr<EDK3::Texture> texture;
-  EDK3::Texture::Load("./test/T_Pringles.jpg", &texture);
+  EDK3::Texture::Load("../../../assets/test/Pringles_logo.png", &texture);
   if (!texture) {
       printf("Can't load texture.png\n");
       exit(-2);
@@ -71,7 +72,7 @@ void InitScene() {
 }
 
 void UpdateFn() {
-    GameState.root->set_rotation_y(ESAT::Time() / 10);
+    GameState.root->set_rotation_y(ESAT::Time() / 100);
   GameState.camera->set_clear_color(0.94f, 1.0f, 0.94f, 1.0f);
 }
 

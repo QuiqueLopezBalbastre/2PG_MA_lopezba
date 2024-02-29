@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="deps">
+      <UniqueIdentifier>{F1A1957C-DDD8-960D-86C5-7C1072DB120F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\EDK">
+      <UniqueIdentifier>{D426A231-C0F3-FC3C-E90C-EBE4D53832CB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\EDK\include">
+      <UniqueIdentifier>{47E2029E-33DB-21F0-5C0D-0775486501FC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\EDK\include\EDK3">
+      <UniqueIdentifier>{9DE73786-0954-F380-D247-8BDE3E7315E9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\EDK\include\EDK3\dev">
+      <UniqueIdentifier>{CBEA0729-37AD-3BB3-805D-CA3FEC5E1491}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\EDK\include\ESAT">
+      <UniqueIdentifier>{43263886-AF92-F380-7886-8BDEE4B115E9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\EDK\include\ESAT_extra">
+      <UniqueIdentifier>{2615BC7F-9222-EA65-1B09-E6508715B61C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\Perlin">
+      <UniqueIdentifier>{0ACAC197-767F-3A8D-FF73-34646B283191}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\Perlin\include">
+      <UniqueIdentifier>{7D5B5581-E9BC-328F-722A-7941DE8A694E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\Perlin\include\Perlin">
+      <UniqueIdentifier>{16CE77B6-02DE-2387-6B97-88A557C61220}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\Perlin\src">
+      <UniqueIdentifier>{217D67D8-8D08-D59C-9619-58910224319D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\STB">
+      <UniqueIdentifier>{6964A231-5531-FD3C-7E4A-EBE46A7632CB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\STB\include">
+      <UniqueIdentifier>{DCE45D11-C8DD-7C63-F10F-62E8DD675C6F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{89AF369E-F58E-B539-FEA6-40106A051C9B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests">
+      <UniqueIdentifier>{78756B10-E489-93C1-AD0B-372119DF8FF2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\deps\EDK\include\EDK3\camera.h">
+      <Filter>deps\EDK\include\EDK3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\EDK3\constants.h">
+      <Filter>deps\EDK\include\EDK3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\EDK3\dev\buffer.h">
+      <Filter>deps\EDK\include\EDK3\dev</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\EDK3\dev\framebuffer.h">
+      <Filter>deps\EDK\include\EDK3\dev</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\EDK3\dev\glew.h">
+      <Filter>deps\EDK\include\EDK3\dev</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\EDK3\dev\gpumanager.h">
+      <Filter>deps\EDK\include\EDK3\dev</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\EDK3\dev\opengl.h">
+      <Filter>deps\EDK\include\EDK3\dev</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\EDK3\dev\program.h">
+      <Filter>deps\EDK\include\EDK3\dev</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\EDK3\dev\shader.h">
+      <Filter>deps\EDK\include\EDK3\dev</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\EDK3\drawable.h">
+      <Filter>deps\EDK\include\EDK3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\EDK3\geometry.h">
+      <Filter>deps\EDK\include\EDK3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\EDK3\matcustom.h">
+      <Filter>deps\EDK\include\EDK3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\EDK3\matdiffuse.h">
+      <Filter>deps\EDK\include\EDK3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\EDK3\matdiffusetexture.h">
+      <Filter>deps\EDK\include\EDK3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\EDK3\material.h">
+      <Filter>deps\EDK\include\EDK3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\EDK3\materialsettings.h">
+      <Filter>deps\EDK\include\EDK3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\EDK3\matpostprocess.h">
+      <Filter>deps\EDK\include\EDK3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\EDK3\node.h">
+      <Filter>deps\EDK\include\EDK3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\EDK3\ref_ptr.h">
+      <Filter>deps\EDK\include\EDK3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\EDK3\referenced.h">
+      <Filter>deps\EDK\include\EDK3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\EDK3\rendertarget.h">
+      <Filter>deps\EDK\include\EDK3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\EDK3\scoped_array.h">
+      <Filter>deps\EDK\include\EDK3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\EDK3\scoped_ptr.h">
+      <Filter>deps\EDK\include\EDK3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\EDK3\texture.h">
+      <Filter>deps\EDK\include\EDK3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\ESAT\draw.h">
+      <Filter>deps\EDK\include\ESAT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\ESAT\input.h">
+      <Filter>deps\EDK\include\ESAT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\ESAT\math.h">
+      <Filter>deps\EDK\include\ESAT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\ESAT\sprite.h">
+      <Filter>deps\EDK\include\ESAT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\ESAT\time.h">
+      <Filter>deps\EDK\include\ESAT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\ESAT\window.h">
+      <Filter>deps\EDK\include\ESAT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\ESAT_extra\imgui.h">
+      <Filter>deps\EDK\include\ESAT_extra</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\ESAT_extra\sqlite3.h">
+      <Filter>deps\EDK\include\ESAT_extra</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\ESAT_extra\sqlite3ext.h">
+      <Filter>deps\EDK\include\ESAT_extra</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\EDK\include\ESAT_extra\tiny_obj_loader.h">
+      <Filter>deps\EDK\include\ESAT_extra</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\Perlin\include\Perlin\SimplexNoise.h">
+      <Filter>deps\Perlin\include\Perlin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\STB\include\stbi_image.h">
+      <Filter>deps\STB\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\geometry_custom_quad.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\material_basic.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\material_custom.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\deps\Perlin\src\SimplexNoise.cpp">
+      <Filter>deps\Perlin\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\geometry_custom_quad.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\material_basic.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\material_custom.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\tests\PR03_07_Quad.cc">
+      <Filter>tests</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
