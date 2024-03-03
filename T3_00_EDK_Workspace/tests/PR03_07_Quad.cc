@@ -46,6 +46,8 @@ void InitScene() {
   //Creating a cube:
   EDK3::ref_ptr<EDK3::Geometry> cube;
   EDK3::CreateCube(&cube, 1.0f, true, true);
+  EDK3::ref_ptr<EDK3::Geometry> quad;
+  EDK3::CreateQuad(&quad, 1.0f, true, true);
 
 
   //Loading texture:
@@ -97,7 +99,7 @@ void InitScene() {
   drawable->set_HPR(0.0f, 0.0f, 0.0f);
   root->addChild(drawable.get());
   drawable.alloc();
-  drawable->set_geometry(cube.get());
+  drawable->set_geometry(quad.get());
   drawable->set_material(mat_basic_text.get());
   drawable->set_material_settings(mat_basic_text_settings.get());
   drawable->set_position(3.0f, 0.0f, 0.0f);
