@@ -16,17 +16,24 @@ namespace EDK3 {
 //IMPORTANT!!!
 //TODO constructors, destructor and =operator here!!!
 
-  QuadCustom::QuadCustom(){}
+  QuadCustom::QuadCustom()
+  {
+    is_initialized_ = false;
+  }
   QuadCustom::~QuadCustom(){}
+  QuadCustom& QuadCustom::operator=(const QuadCustom&)
+  {
+    return *this;
+  }
 
 void QuadCustom::init(const float quad_size) {
   //TODO demand graphic resources to the GPUManager.
 
   EDK3::dev::GPUManager::Instance()->newBuffer(&elements_buffer);
   EDK3::dev::GPUManager::Instance()->newBuffer(&order_buffer);
-  /**
+  /*
    The quad face is like this:
-         0----------1
+         0---------1
          |\        |
          | \       |
          |  \      |
@@ -42,10 +49,11 @@ void QuadCustom::init(const float quad_size) {
 
   //****** Positions:
   //TODO
-  ESAT::Vec3 positions[4] = { (-0.5f, 0.5f, 0.0f),
-                             (-0.5f,-0.5f, 0.0f),
-                             ( 0.5f,-0.5f, 0.0f),
-                             ( 0.5f, 0.5f, 0.5f) };
+  float size = quad_size * 0.5f;
+  ESAT::Vec3 positions[4] = { {-size, size, 0.0f},
+                             {size, size, 0.0f},
+                             { -size,-size, 0.0f},
+                             { size, -size, 0.0f} };
 
   //****** Normals:
   //TODO
@@ -60,9 +68,9 @@ void QuadCustom::init(const float quad_size) {
   //TODO
   ESAT::Vec2 uvs[4] = {
     {0.0f, 1.0f},
+    {1.0f, 1.0f},
     {0.0f, 0.0f},
     {1.0f, 0.0f},
-    {1.0f, 1.0f},
   };
 
   //****** Colors:
@@ -110,17 +118,17 @@ bool QuadCustom::bindAttribute(const Attribute a,
   {
   case Attribute::A_POSITION:
     EDK3::dev::GPUManager::Instance()->enableVertexAttribute(
-      elements_buffer.get(), 0, EDK3::T_FLOAT_3, 0,
+      elements_buffer.get(), where_to_bind_attribute, EDK3::T_FLOAT_3, 0,
       sizeof(float) * 0.0f, sizeof(float) * 8.0f);
     break;
   case Attribute::A_NORMAL:
     EDK3::dev::GPUManager::Instance()->enableVertexAttribute(
-      elements_buffer.get(), 1, EDK3::T_FLOAT_3, 0, 
+      elements_buffer.get(), where_to_bind_attribute, EDK3::T_FLOAT_3, 0, 
       sizeof(float) * 3.0f, sizeof(float) * 8.0f);
     break;
   case Attribute::A_UV:
     EDK3::dev::GPUManager::Instance()->enableVertexAttribute(
-      elements_buffer.get(), 2, EDK3::T_FLOAT_3, 0, 
+      elements_buffer.get(), where_to_bind_attribute, EDK3::T_FLOAT_3, 0, 
       sizeof(float) * 6.0f, sizeof(float) * 8.0f);
 
     break;

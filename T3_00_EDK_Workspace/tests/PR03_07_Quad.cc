@@ -24,6 +24,7 @@
 #include "ESAT_extra/imgui.h"
 #include "EDK3/dev/opengl.h"
 
+#include "geometry_custom_quad.h"
 
 //Unnamed struct and it's unique instance:
 struct {
@@ -44,10 +45,10 @@ void InitScene() {
   EDK3::dev::GPUManager::CheckGLError("Initializing the scene...");
   
   //Creating a cube:
-  EDK3::ref_ptr<EDK3::Geometry> cube;
-  EDK3::CreateCube(&cube, 1.0f, true, true);
-  EDK3::ref_ptr<EDK3::Geometry> quad;
-  EDK3::CreateQuad(&quad, 1.0f, true, true);
+  EDK3::ref_ptr < EDK3::QuadCustom > quad;
+  quad.alloc();
+  //EDK3::CreateQuad(&quad, 1.0f, true, true);
+  quad->init(3.0f);
 
 
   //Loading texture:
@@ -92,12 +93,13 @@ void InitScene() {
   //Creates the drawables (Geometry + Material + Settings):
   EDK3::ref_ptr<EDK3::Drawable> drawable;
   drawable.alloc();
-  drawable->set_geometry(cube.get());
+  drawable->set_geometry(quad.get());
   drawable->set_material(mat_basic_text.get());
   drawable->set_material_settings(mat_basic_text_settings2.get());
-  drawable->set_position(-3.0f, 0.0f, 0.0f);
+  drawable->set_position(0.0f, 0.0f, 0.0f);
   drawable->set_HPR(0.0f, 0.0f, 0.0f);
   root->addChild(drawable.get());
+  /*
   drawable.alloc();
   drawable->set_geometry(quad.get());
   drawable->set_material(mat_basic_text.get());
@@ -105,11 +107,12 @@ void InitScene() {
   drawable->set_position(3.0f, 0.0f, 0.0f);
   drawable->set_HPR(0.0f, 0.0f, 0.0f);
   root->addChild(drawable.get());
+  */
 
   //Allocating and initializing the camera:
   GameState.camera.alloc();
-  float pos[] = { 0.0f, 5.0f, 15.0f };
-  float view[] = { 0.0f, 0.0f, 0.0f};
+  float pos[] = { 5.0f, 5.0f, 5.0f };
+  float view[] = { -1.0f, -1.0f, -1.0f};
   GameState.camera->set_position(pos);
   GameState.camera->set_view_target(view);
 
@@ -121,7 +124,7 @@ void UpdateFn() {
   //Updates the root node:
 
     GameState.root->child(0)->set_rotation_y(5 * ESAT::Time() / 100.0);
-    GameState.root->child(1)->set_rotation_y(-5 * ESAT::Time() / 100.0);
+    //GameState.root->child(1)->set_rotation_y(-5 * ESAT::Time() / 100.0);
 
   //Orbital camera:
 

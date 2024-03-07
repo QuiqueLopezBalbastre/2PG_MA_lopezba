@@ -21,7 +21,7 @@ project_names = {
   "PR03_05_BasicMaterial",
   "PR03_06_CustomMaterial",
   "PR03_07_Quad",
-  --"PR03_08_Cube",
+  "PR03_08_Cube",
   --"PR03_09_Sphere",
   --"PR03_10_Surface",
   --"PR03_11_Camera",
@@ -36,7 +36,7 @@ solution("EDK_Workspace_" .. _ACTION)
   location(PROJ_DIR .. "/build/")
   language "C++"
   kind "ConsoleApp"
-  startproject "PR03_07_Quad"
+  startproject "PR03_08_Cube"
   platforms {
     "x32",
     "Native",
@@ -161,16 +161,16 @@ project "PR03_07_Quad"
 	files {
 	  path.join(PROJ_DIR, "./tests/PR03_07_Quad.cc"),
   }
+  project "PR03_08_Cube"
+    files {
+      path.join(PROJ_DIR, "./tests/PR03_08_Cube.cc"),
+    }
   --[[
 project "PR03_04_DotProduct"
 	files {
     path.join(PROJ_DIR, "./tests/PR03_04_DotProduct.cc"),
   }
   
-project "PR03_08_Cube"
-	files {
-	  path.join(PROJ_DIR, "./tests/PR03_08_Cube.cc"),
-  }
 
 project "PR03_09_Sphere"
 	files {
