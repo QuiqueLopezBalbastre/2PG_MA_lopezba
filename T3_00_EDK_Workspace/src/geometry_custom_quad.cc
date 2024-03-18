@@ -128,7 +128,7 @@ bool QuadCustom::bindAttribute(const Attribute a,
     break;
   case Attribute::A_UV:
     EDK3::dev::GPUManager::Instance()->enableVertexAttribute(
-      elements_buffer.get(), where_to_bind_attribute, EDK3::T_FLOAT_3, 0, 
+      elements_buffer.get(), where_to_bind_attribute, EDK3::T_FLOAT_2, 0, 
       sizeof(float) * 6.0f, sizeof(float) * 8.0f);
 
     break;

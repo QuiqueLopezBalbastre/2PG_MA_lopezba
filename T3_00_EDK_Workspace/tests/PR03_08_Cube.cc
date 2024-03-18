@@ -48,7 +48,7 @@ void InitScene() {
   //Creating a cube:
   EDK3::ref_ptr < EDK3::CubeCustom > cube;
   cube.alloc();
-  cube->init24v(3.0f);
+  cube->init8v(3.0f);
 
 
   //Loading texture:
@@ -95,7 +95,7 @@ void InitScene() {
   drawable.alloc();
   drawable->set_geometry(cube.get());
   drawable->set_material(mat_basic_text.get());
-  drawable->set_material_settings(mat_basic_text_settings2.get());
+  drawable->set_material_settings(mat_basic_text_settings.get());
   drawable->set_position(0.0f, 0.0f, 0.0f);
   drawable->set_HPR(0.0f, 0.0f, 0.0f);
   root->addChild(drawable.get());
@@ -118,12 +118,13 @@ void InitScene() {
 
   GameState.camera->setupPerspective(30.0f, (float)kWindowWidth / (float)kWindowHeight, 1.0f, 1500.0f);
   EDK3::dev::GPUManager::CheckGLError("Prepare END");
+  //GameState.camera->doCull()
 }
 
 void UpdateFn() {
   //Updates the root node:
 
-    GameState.root->child(0)->set_rotation_y(5 * ESAT::Time() / 100.0);
+    GameState.root->child(0)->set_rotation_y(5.0f * ESAT::Time() / 100.0);
     //GameState.root->child(1)->set_rotation_y(-5 * ESAT::Time() / 100.0);
 
   //Orbital camera:
