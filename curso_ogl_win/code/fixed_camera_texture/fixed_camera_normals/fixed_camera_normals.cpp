@@ -29,7 +29,9 @@
 #include "deps/sokol_app.h"
 #include "deps/sokol_time.h"
 
-//----
+//DDS
+// DDS es un formato para cargar texturas
+#include "deps/dds.h"
 
 
 static int gWindowWidth = 800;
@@ -117,11 +119,11 @@ struct MeshVtx
   float x, y, z;
   float vx, vy, vz;
   float u, v;
-} ;
+};
 
-static void UploadMesh (const MeshVtx* vertices, int vertices_size,
-                        const unsigned int* indices, int indices_size,
-                        unsigned int& VBO, unsigned int& VAO, unsigned int& EBO)
+static void UploadMesh(const MeshVtx* vertices, int vertices_size,
+  const unsigned int* indices, int indices_size,
+  unsigned int& VBO, unsigned int& VAO, unsigned int& EBO)
 {
   glGenVertexArrays(1, &VAO);
   glGenBuffers(1, &VBO);
@@ -148,15 +150,32 @@ static void UploadMesh (const MeshVtx* vertices, int vertices_size,
 
 static unsigned int gTexture;
 
-static unsigned int UploadTexture(int w, int h)
+static unsigned int UploadTexture(int w, int h, const char* filename = "a")
 {
-  unsigned int *texels = new unsigned int[w * h];
 
-  for (unsigned int y = 0; y < h; y++)
+  unsigned int* texels = new unsigned int[w * h];
+  if (0 == strcmp(filename, "a"))
   {
-    for (unsigned int x = 0; x < w; x++)
+    for (unsigned int y = 0; y < h; y++)
     {
-      texels[x + y * w] =  x | (y << 8) | (0 << 16) | (255 << 24);
+      for (unsigned int x = 0; x < w; x++)
+      {
+        texels[x + y * w] = x | (y << 8) | (0 << 16) | (255 << 24);
+      }
+    }
+  }
+  else
+  {
+    unsigned char* texture = Slurp(/*"./data/blue_eye.dds"*/filename);
+    char dds_check[4];
+    for (int i = 0; i < 4; i++)
+    {
+      dds_check[i] = texture[i];
+    }
+    if (0 == strcmp(dds_check, "DDS "))
+    {
+      texture = texture + 4;
+
     }
   }
   unsigned int texture;
@@ -168,12 +187,18 @@ static unsigned int UploadTexture(int w, int h)
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
-  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, texels);
+  if (0 == strcmp(filename, "a"))
+  {
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, texels);
+  }
+  else
+  {
+    //glCompressedTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, texels);
+  }
   glGenerateMipmap(GL_TEXTURE_2D);
   assert(glGetError() == GL_NO_ERROR);
   return texture;
 }
-
 
 static MeshVtx gMesh[] = {
   {+1.0f, +1.0f, +1.0f, +0.577f, +0.577f, +0.577f}, // 0
@@ -193,7 +218,7 @@ static unsigned int gIndices[] = {
   5, 4, 1, 4, 0, 1,
   6, 2, 7, 2, 3, 7,
   5, 1, 2, 2, 6, 5,
-  0, 4, 7, 7, 3, 0 
+  0, 4, 7, 7, 3, 0
 };
 
 
@@ -262,7 +287,7 @@ void onInit()
   char* fragment_shader_source = (char*)Slurp("fragment.glslf");
   ShadersInit(gShaderProgram, vertex_shader_source, fragment_shader_source);
 
-  UploadMesh(gMesh, sizeof(gMesh), gIndices, sizeof(gIndices), gVBO1, gVAO1, gEBO1);
+  //UploadMesh(gMesh, sizeof(gMesh), gIndices, sizeof(gIndices), gVBO1, gVAO1, gEBO1);
   UploadMesh(gMeshGroups, sizeof(gMeshGroups), gIndicesGroups, sizeof(gIndicesGroups), gVBO0, gVAO0, gEBO0);
 
   glEnable(GL_CULL_FACE);
@@ -270,7 +295,7 @@ void onInit()
 
   glEnable(GL_DEPTH_TEST);
 
-  
+
   gLocationColor = glGetUniformLocation(gShaderProgram, "RawColor");
   gLocationPointLightPos = glGetUniformLocation(gShaderProgram, "PointLightPos");
   gLocationTexture = glGetUniformLocation(gShaderProgram, "Texture0");
